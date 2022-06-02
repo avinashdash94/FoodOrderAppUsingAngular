@@ -6,6 +6,8 @@ export const environment = {
   production: false
 };
 
+// githublink: https://github.com/riteshgandhi/ng-star-rating#readme  ***this link for install star rating module to download
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
