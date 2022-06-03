@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Foods } from 'src/app/shared/models/food';
+import { Tag } from 'src/app/shared/models/Tag';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,7 @@ export class FoodService {
 
   constructor() { }
 
+  //This function will return all the food Item as array of Foods
   getAll(): Foods[]{
     return [
      {
@@ -19,7 +21,7 @@ export class FoodService {
         origins: ['italy','france'],
         star: 1.0,
         imageUrl:  '/assets/food-1.jpg',
-        tags: ['FastFood', 'Pissa', "Lunch"]
+        tags: ['Hamburger', 'Pizza', "Lunch"]
       }	 ,
       {
         id: 2,
@@ -30,7 +32,7 @@ export class FoodService {
         origins: ['indian'],
         star: 2.5,
         imageUrl:  '/assets/food-2.jpg',
-        tags: ['FastFood', 'Pissa', "Lunch"]
+        tags: ['Hamburger', 'Pizza', "Lunch"]
       }	,     
     {
       id: 3,
@@ -41,7 +43,7 @@ export class FoodService {
       origins: ['italy', 'belgium', 'france', 'indian'],
       star: 3.0,
       imageUrl:  '/assets/food-3.jpg',
-      tags: ['FastFood', 'Pissa', "Lunch"]
+      tags: ['Fry']
     }	,
    
     {
@@ -53,7 +55,7 @@ export class FoodService {
       origins: ['italy'],
       star: 4.5,
       imageUrl:  '/assets/food-4.jpg',
-      tags: ['FastFood', 'Pissa', "Lunch"]
+      tags: ['FastFood', 'Pizza', "Lunch"]
     }	,
     {
       id: 5,
@@ -64,7 +66,7 @@ export class FoodService {
       origins: ['italy'],
       star: 4.0,
       imageUrl:  '/assets/food-5.jpg',
-      tags: ['FastFood', 'Pissa', "Lunch"]
+      tags: ['brunch']
     }	,
     {
       id: 6,
@@ -75,7 +77,7 @@ export class FoodService {
       origins: ['italy'],
       star: 4.0,
       imageUrl:  '/assets/food-6.jpg',
-      tags: ['FastFood', 'Pissa', "Lunch"]
+      tags: ['FastFood', 'Pizza', "Lunch"]
     }	,
     {
       id: 7,
@@ -86,7 +88,7 @@ export class FoodService {
       origins: ['italy'],
       star: 4.0,
       imageUrl:  '/assets/food-7.jpg',
-      tags: ['FastFood', 'Pissa', "Lunch"]
+      tags: ['SlowFood', 'Pizza', "Lunch"]
     }	,
     {
       id: 8,
@@ -97,8 +99,34 @@ export class FoodService {
       origins: ['italy'],
       star: 4.0,
       imageUrl:  '/assets/food-8.jpg',
-      tags: ['FastFood', 'Pissa', "Lunch"]
+      tags: ['FastFood', "Soup"]
     }	
     ]
   }
+
+  //This function will return the Food based on tag  type 
+  getAllFoodByTag(tag: string): Foods[]{
+
+    if(tag == "All")
+     return this.getAll();
+     else
+     return this.getAll().filter(food => food.tags?.map(element => {return element.toLowerCase(); })?.includes(tag.toLowerCase()));
+     // else condition can be wrtten as below
+      // return tag =="All"? this.getAll() : this.getAll().filter(food => food.tags?.includes(tag))
+
+  }
+
+  getAllTag(): Tag[]{
+      return [
+        {name: 'All', count: 14},
+        {name: 'FastFood', count: 4},
+        {name: 'Pizza', count: 2},
+        {name: 'Lunch', count: 3},
+        {name: 'SlowFood', count: 2},
+        {name: 'Hamburger', count: 1},
+        {name: 'Fry', count: 1},
+        {name: 'Soup', count: 1},
+      ]
+  }
+
 }
