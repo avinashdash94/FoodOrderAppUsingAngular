@@ -129,4 +129,8 @@ export class FoodService {
       ]
   }
 
+  getFoodById(id: number): Foods{
+    return this.getAll().find(food=> food.id == id)!;
+  }
+
 }
