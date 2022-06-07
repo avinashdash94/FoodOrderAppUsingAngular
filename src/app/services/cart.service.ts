@@ -11,13 +11,12 @@ export class CartService {
   private cart: Cart = new Cart();
   constructor() { }
 
-  addCart(food:Foods):void{
+  addToCart(food:Foods):void{
     let cartItem = this.cart.items.find(item => item.food.id === food.id)
     if(cartItem){
       this.changeQuantity(food.id, cartItem.quantity + 1);
       return;
     }
-
     this.cart.items.push(new CartItem(food));
   }
 
@@ -31,9 +30,7 @@ export class CartService {
     cartItem.quantity = quantity;
   }
 
-  getCArt():Cart{
-
+  getCart():Cart{
     return this.cart;
-
   }
 }
