@@ -1,9 +1,9 @@
 <app-search></app-search>
-<app-tags></app-tags>
+<app-tags justifyContent="center"></app-tags>
 <app-not-found
 [visible]="!foods || foods.length <=0"
 notFoundMessage="Nothing Found!"
-resteLinkText="Resset"
+resteLinkText="Reset"
 ></app-not-found>
 <ul>
     <li *ngFor="let food of foods">
